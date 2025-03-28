@@ -72,7 +72,12 @@ export const Skills = () => {
             viewport={{ once: true }}
           >
             {skills.slice(0, 4).map((skill) => (
-              <SkillBar key={skill.name} skill={skill} />
+              <SkillBar 
+                key={skill.name} 
+                skill={skill} 
+                itemVariants={itemVariants}
+                barVariants={barVariants}
+              />
             ))}
           </motion.div>
         </div>
@@ -96,7 +101,12 @@ export const Skills = () => {
             viewport={{ once: true }}
           >
             {skills.slice(4).map((skill) => (
-              <SkillBar key={skill.name} skill={skill} />
+              <SkillBar 
+                key={skill.name} 
+                skill={skill} 
+                itemVariants={itemVariants}
+                barVariants={barVariants}
+              />
             ))}
           </motion.div>
         </div>
@@ -105,7 +115,13 @@ export const Skills = () => {
   );
 };
 
-const SkillBar = ({ skill }: { skill: Skill }) => {
+interface SkillBarProps {
+  skill: Skill;
+  itemVariants: any;
+  barVariants: any;
+}
+
+const SkillBar = ({ skill, itemVariants, barVariants }: SkillBarProps) => {
   return (
     <motion.div variants={itemVariants}>
       <div className="flex justify-between mb-1">

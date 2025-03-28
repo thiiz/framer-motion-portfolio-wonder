@@ -72,19 +72,24 @@ export const Projects = () => {
         viewport={{ once: true }}
       >
         {projects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+          <ProjectCard key={project.id} project={project} variants={itemVariants} />
         ))}
       </motion.div>
     </AnimatedSection>
   );
 };
 
-const ProjectCard = ({ project }: { project: Project }) => {
+interface ProjectCardProps {
+  project: Project;
+  variants: any; // Added variants prop
+}
+
+const ProjectCard = ({ project, variants }: ProjectCardProps) => {
   const [hovered, setHovered] = useState(false);
   
   return (
     <motion.div
-      variants={itemVariants}
+      variants={variants}
       className="glass-panel overflow-hidden rounded-xl group"
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
